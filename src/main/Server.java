@@ -22,12 +22,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-import data.PlayerConfirm;
 import data.ServerData;
 
 public class Server implements Runnable {
 	public ServerSocket server;
-//	public World world;
 	Socket sock;
 	Thread thread;
 	CreationFrame creationframe;
