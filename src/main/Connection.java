@@ -16,8 +16,10 @@ public class Connection implements Runnable{
 	Thread thread;
 	Player player;
 	Server server;
+	int lifepoints;
 	public Connection(Server w, ObjectInputStream i, ObjectOutputStream o) {
 		server = w;
+		lifepoints = 10;
 		in = i;
 		out = o;
 		player  = new Player();
@@ -66,10 +68,28 @@ public class Connection implements Runnable{
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
+				lifepoints--;
+				System.out.println(lifepoints);
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				lifepoints--;
+				System.out.println(lifepoints);
+			}
+			if(lifepoints<0) {
+				detach();
+				break;
 			}
 		}
+	}
+	public void detach() {
+		try {
+			this.out.close();
+			this.in.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		server.detach(this);
 	}
 }

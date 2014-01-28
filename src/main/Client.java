@@ -297,10 +297,10 @@ public class Client implements Runnable{
 					connectframe.serverinfo.setText(currentserverdata.players);
 				}
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
+				connectframe.addText(e.getMessage()+" ("+ip+":"+port+")\n");
 				e.printStackTrace();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				connectframe.addText(e.getMessage()+" ("+ip+":"+port+")\n");
 				e.printStackTrace();
 			}
 		}

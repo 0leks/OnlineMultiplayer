@@ -80,36 +80,13 @@ public class Server implements Runnable {
 		}
 		return true;
 	}
-//	public PlayerConfirm isPlayerGood(Player p) {
-//		PlayerConfirm pc = new PlayerConfirm();
-//		boolean name = false;
-//		boolean color = false;
-//		for(int a=0; a<connections.size(); a++) {
-//			if(connections.get(a).player!=null) {
-//				if(p.name.equals(connections.get(a).player.name) && name==false) {
-//					pc.msg+="Name "+p.name+" is taken";
-//					name = true;
-//				}
-//				if(color==false) {
-//					Color cur = connections.get(a).player.color;
-//					int dif = Math.abs(cur.getRed()-p.color.getRed());
-//					dif += Math.abs(cur.getGreen()-p.color.getGreen());
-//					dif += Math.abs(cur.getBlue()-p.color.getBlue());
-//					if(dif<50) {
-//						pc.msg+=", Color ("+cur.getRed()+","+cur.getGreen()+","+cur.getBlue()+") is taken";
-//						color = true;
-//					}
-//				}
-//			}
-//		}
-//		return pc;
-//	}
 	public void start() {
 		thread.start();
 	}
-//	public void addConnection() {
-//		
-//	}
+	public void detach(Connection c) {
+		connections.remove(c);
+		System.out.println(c.player+" was detached");
+	}
 	@Override
 	public void run() {
 		worldframe = new WorldFrame();
